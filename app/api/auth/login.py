@@ -5,11 +5,12 @@ from flask import current_app, request
 from . import auth_blueprint
 from app.models import User,Session
 
-@auth_blueprint.route("/login",methods=["POST"])
+
+@auth_blueprint.route("/login", methods=["POST", "GET"])
 def login():
-    if not request.json:
-        return 'error'
-    data = request.json
+    # if not request.json:
+    #     return 'error'
+    data = request.json or request.args
     username = data.get('username')
     password = data.get('password')
     user = User.validate_user(username, password)
@@ -20,10 +21,10 @@ def login():
         else:
             return 'blocked'
     else:
-        return 'error'
+        return 'error', 401
 
 
-@auth_blueprint.route("/logout",methods=["POST"])
+@auth_blueprint.route("/logout", methods=["POST", "GET"])
 def logout():
     if not request.json:
         return 'error'
@@ -37,12 +38,13 @@ def logout():
     if not session.active:
         return 'logout'
 
-    return 'error'
+    return 'error', 400
+
 
 @auth_blueprint.route("/regist", methods=["POST"])
 def regist():
     if not request.json:
-        return 'error'
+        return 'error',
     data = request.json
     if "username" in data:
         username = data["username"]
@@ -57,4 +59,5 @@ def regist():
     user = User.add_user(user)
     if user:
         return str(user)
-    return 'error'
+
+    return 'error', 400

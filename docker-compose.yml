@@ -1,0 +1,38 @@
+version: "3.0"
+services:
+
+  flask-factory:
+    image: your-registry/your-namespace/flask-factory
+#    restart: always
+    # There are two main methods to make the web to be public.
+    # The first one is expose the port like below.
+    # The second one is using nignx to access it through the internal docker networks.
+    # So that it will be safer and configured easily with load balance.
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      back:
+        aliases:
+          - flask-factory
+
+  mysql:
+    image: mysql
+#    restart: always
+    volumes:
+      # You'd better change it to be a safe and fixed place outside of this project.
+      # Otherwise, it could be lost or built into the docker image file.
+      # Of course, it's not safe for your data security.
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/log:/vat/log/mysql
+      - ./docker/mysql/conf:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: flask_factory
+    networks:
+      back:
+        aliases:
+          - mysql
+
+networks:
+  back:
+
