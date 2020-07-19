@@ -20,8 +20,8 @@ def create_app(config_name='development'):
     # config db
     db.init_app(app)
 
-    from app.models import check_init_db
-    check_init_db(app)
+    from app.models import db_init
+    db_init(app)
 
     # config scheduler   alternative
     # if you have some backend work or schedule something timely, config it in config file.

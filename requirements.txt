@@ -2,6 +2,7 @@ flask
 flask_script
 flask_migrate
 flask_sqlalchemy==2.4.0
+sqlalchemy_utils
 flask_cors
 flask_apscheduler
 mysql-connector-python==8.0.16
