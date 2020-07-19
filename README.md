@@ -1,6 +1,12 @@
 # flask-factory
  This is a simple example of flask factory app.
  Use docker to support it and do cicd.
+ 
+## Run it
+    Preparation: git docker
+    the first time: git clone https://github.com/LemonTree1994/flask-factory.git && sh cicd.sh
+    update: git pull && sh cicd.sh
+    
 # Why flask
 Flask is a flexible and micro framework, and it is more suitable for a restful api.
 # Why factory
