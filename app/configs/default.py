@@ -1,7 +1,7 @@
 import logging
 import os
 
-PROJECT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LOG_PATH = os.path.abspath(os.path.join(PROJECT_PATH, "logs"))
 
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16M
