@@ -14,6 +14,7 @@ services:
       back:
         aliases:
           - flask-factory
+        ipv4_address: 192.168.2.99
 
   mysql:
     image: mysql
@@ -31,6 +32,28 @@ services:
         aliases:
           - mysql
 
+  mongo:
+    image: mongo：3.11.0
+    restart: always
+    privileged: true
+    volumes:
+      - ./docker/mongo/data/db:/data/db
+      - ./docker/mongo/data/configdb:/data/configdb
+      - ./docker/mongo/init.d:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_USERNAME: dbuser
+      MONGO_PASSWORD: password
+      MONGO_DATABASE: flask_factory
+    networks:
+      back:
+        aliases:
+          - mongo
+
 networks:
   back:
-
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24

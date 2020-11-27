@@ -1,8 +1,9 @@
-flask
-flask_script
-flask_migrate
+flask=1.1.1
+Flask-Script=2.0.6
+Flask-Migrate==2.5.2
 flask_sqlalchemy==2.4.0
-sqlalchemy_utils
-flask_cors
-flask_apscheduler
+SQLAlchemy-Utils==0.36.8
+Flask-Cors==3.0.8
+Flask-APScheduler==1.11.0
 mysql-connector-python==8.0.16
+pymongo==3.11.0

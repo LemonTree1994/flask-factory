@@ -2,3 +2,4 @@
 logs
 docker
 migrations
+!docker/mongo/init.d
