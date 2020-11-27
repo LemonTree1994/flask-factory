@@ -1,7 +1,7 @@
-from . import default, dev, prod
+from . import dev, prod
 
 config_map = {
-    "dev": dev,
-    "prod": prod,
-    "default": dev,
+    'default': dev,
+    'dev': dev,
+    'prod': prod
 }

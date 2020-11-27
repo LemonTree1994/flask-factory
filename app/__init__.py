@@ -8,7 +8,7 @@ import os
 
 db = SQLAlchemy()
 
-def create_app(config_name='development'):
+def create_app(config_name='dev'):
 
     # create app
     app = Flask(__name__)
