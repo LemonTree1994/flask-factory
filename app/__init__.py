@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app.config import config_map
+from app.configs import config_map
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_apscheduler import APScheduler
