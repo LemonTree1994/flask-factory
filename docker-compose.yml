@@ -17,7 +17,7 @@ services:
         ipv4_address: 192.168.2.99
 
   mysql:
-    image: mysql
+    image: mysql:5.7
     restart: always
     volumes:
       # You'd better change it to be a safe and fixed place outside of this project.
@@ -33,7 +33,7 @@ services:
           - mysql
 
   mongo:
-    image: mongo：3.11.0
+    image: mongo:4.2
     restart: always
     privileged: true
     volumes:
